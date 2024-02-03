@@ -76,4 +76,5 @@ npm run knex -- -h
 Dando sucesso você vai poder executar o comando de migration:
 ```bash
 npm run knex migrate:make create-documents 
+npm run knex -- migrate:latest
 ```
