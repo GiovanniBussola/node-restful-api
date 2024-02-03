@@ -45,3 +45,12 @@ Você pode executar o código para corrigir todos os erros de Lint do código, e
 ```bash
 eslint src --ext .ts --fix
 ```
+
+### Conectando no banco de dados
+Você pode usar os **drivers nativos** como por exemplo o https://github.com/sidorares/node-mysql2 mas usando isso as queries seriam todos exatas para aquele banco.
+
+Dito isso, é aconselhável utilizar um gerenciador para isso, uma ótima oportunidade é usar o Knex https://knexjs.org/ assim você pode fazer queries utilizando Javascript (Ele converte para query de banco no final das contas) mas facilita muito as consultas.
+
+```bash
+npm i knex sqlite3
+```
