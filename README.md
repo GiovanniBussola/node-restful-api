@@ -23,4 +23,25 @@ Para buildar um arquivo para JS execute:
 npx src/index.ts
 ```
 
+### Instalação do ESLint
+```bash
+npm i -D eslint @rocketseat/eslint-config
+```
+Crie um arquivo na raiz do projeto chamado **.eslintrc.json** e coloque o seguinte código:
+```json
+{
+  "extends": ["@rocketseat/eslint-config/node"]
+}
+```
+Vá para as extensões do seu VSCode e instale o ESLint.
+Depois dê um **Ctrl + Shift + P** e vá para as **Configurações de usuário (User Settings)** e Coloque no JSON a seguinte configuração:
+```json
+"editor.codeActionsOnSave": {
+  "source.fixAll.eslint": true
+},
+```
 
+Você pode executar o código para corrigir todos os erros de Lint do código, eu particulamente acho arriscado.
+```bash
+eslint src --ext .ts --fix
+```
