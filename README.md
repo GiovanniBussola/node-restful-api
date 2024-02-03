@@ -54,3 +54,26 @@ Dito isso, é aconselhável utilizar um gerenciador para isso, uma ótima oportu
 ```bash
 npm i knex sqlite3
 ```
+
+#### Criando migrations:
+Crie um arquivo na raiz do projeto chamado **knexfile.ts** e coloque ele pra exportar as configs do knex que existem no **database.ts**
+
+O Knex recomenda fazer o arquivo de configuração com o formato **.js**, mas podemos fazer uma certa configuração para ele poder ler em **.ts**, para isso vá no package.json e adicione essa parte nos **scripts**:
+
+Para versões do Node abaixo da 18:
+```json
+"knex": "node --loader tsx ./node_modules/.bin/knex"
+```
+Para versões do Node a partir da 18:
+```json
+"knex": "node --import tsx ./node_modules/knex/bin/cli.js"
+```
+
+para ver se funcionou execute:
+```bash
+npm run knex -- -h
+```
+Dando sucesso você vai poder executar o comando de migration:
+```bash
+npm run knex migrate:make create-documents 
+```
