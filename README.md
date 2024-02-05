@@ -1,10 +1,10 @@
 # Anotações das aulas
 
-### Type checking
+## Type checking
 - <b>Runtime Type Checking</b>: Só verifica se as coisas estão funcionando no momento que a aplicação já está rodando.
 - <b>Static Type Checking</b>: Verifica se existem erros ou não no momento que o código está sendo escrito.
 
-### Instalação do Typescript
+## Instalação do Typescript
 Aqui está o combo para erguer um projeto em TS
 ```bash
 npm init -y
@@ -23,7 +23,7 @@ Para buildar um arquivo para JS execute:
 npx src/index.ts
 ```
 
-### Instalação do ESLint
+## Instalação do ESLint
 ```bash
 npm i -D eslint @rocketseat/eslint-config
 ```
@@ -46,7 +46,7 @@ Você pode executar o código para corrigir todos os erros de Lint do código, e
 eslint src --ext .ts --fix
 ```
 
-### Conectando no banco de dados
+## Conectando no banco de dados
 Você pode usar os **drivers nativos** como por exemplo o https://github.com/sidorares/node-mysql2 mas usando isso as queries seriam todos exatas para aquele banco.
 
 Dito isso, é aconselhável utilizar um gerenciador para isso, uma ótima oportunidade é usar o Knex https://knexjs.org/ assim você pode fazer queries utilizando Javascript (Ele converte para query de banco no final das contas) mas facilita muito as consultas.
@@ -55,7 +55,7 @@ Dito isso, é aconselhável utilizar um gerenciador para isso, uma ótima oportu
 npm i knex sqlite3
 ```
 
-#### Criando migrations:
+### Criando migrations:
 Crie um arquivo na raiz do projeto chamado **knexfile.ts** e coloque ele pra exportar as configs do knex que existem no **database.ts**
 
 O Knex recomenda fazer o arquivo de configuração com o formato **.js**, mas podemos fazer uma certa configuração para ele poder ler em **.ts**, para isso vá no package.json e adicione essa parte nos **scripts**:
@@ -78,3 +78,17 @@ Dando sucesso você vai poder executar o comando de migration:
 npm run knex migrate:make create-documents 
 npm run knex -- migrate:latest
 ```
+
+## Requisitos:
+### RF (Requisitos funcionais)
+- [ ] O usuário deve poder criar uma nova transação;
+- [ ] O usuário deve poder obter um resumo da sua conta;
+- [ ] O usuário deve poder listar todas as transações que já ocorreram;
+- [ ] O usuário deve poder visualizar uma transação única;
+
+### RN (Regra de negócio)
+- [ ] A transação pode ser do tipo crédito que somará ao valor total, ou débito que irá subtrair;
+- [ ] Deve ser possível identificarmos o usuário entre as requisições;
+- [ ] O usuário só pode visualizar transações o qual ele criou;
+
+### RNF (Requisitos não funcionais)
