@@ -91,4 +91,11 @@ npm run knex -- migrate:latest
 - [x] Deve ser possível identificarmos o usuário entre as requisições;
 - [x] O usuário só pode visualizar transações o qual ele criou;
 
-### RNF (Requisitos não funcionais)
+
+## Tipos de testes: 
+- Unitários: unidade da sua aplicação (comportamentos das funções)
+- Integração: Comunicação entre duas ou mais unidades
+- e2e (Ponta a ponta): Simulam um usuário operando a aplicação
+
+### Por que estamos usando o Vitest e não o Jest?
+O Vitest traz todas as ferramentas que o Jest tem, a diferença é que por debaixo dos panos o Vitest utiliza o ESBuild o mesmo que o TSX usa, ou seja, ele não vai precisar ser convertido para JS para ser executado. <i>Veja aula Criando primeiro teste, módulo Criando API REST com Node.js</i>
