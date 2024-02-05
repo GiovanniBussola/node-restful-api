@@ -98,4 +98,45 @@ npm run knex -- migrate:latest
 - e2e (Ponta a ponta): Simulam um usuário operando a aplicação
 
 ### Por que estamos usando o Vitest e não o Jest?
-O Vitest traz todas as ferramentas que o Jest tem, a diferença é que por debaixo dos panos o Vitest utiliza o ESBuild o mesmo que o TSX usa, ou seja, ele não vai precisar ser convertido para JS para ser executado. <i>Veja aula Criando primeiro teste, módulo Criando API REST com Node.js</i>
+O Vitest traz todas as ferramentas que o Jest tem, a diferença é que por debaixo dos panos o Vitest utiliza o ESBuild o mesmo que o TSX usa, ou seja, ele não vai precisar ser convertido para JS para ser executado. *Veja aula Criando primeiro teste, módulo Criando API REST com Node.js*
+
+```bash
+npm i -D vitest supertest @types/supertest
+```
+- vitest é a ferramenta de testes
+- supertest é a ferramenta que permite fazermos requisições para a aplicação sem por ela no ar.
+
+#### Exemplo de teste:
+```typescript
+import { expect, test, beforeAll, afterAll } from 'vitest'
+import request from 'supertest'
+import { app } from '../src/app'
+
+beforeAll(async () => {
+  await app.ready()
+})
+
+afterAll(async () => {
+  await app.close()
+})
+
+test('O usuário consegue criar uma nova transação', async () => {
+  const response = await request(app.server).post('/transactions').send({
+    title: 'New transaction',
+    amount: 5000,
+    type: 'credit',
+  })
+
+  expect(response.statusCode).toEqual(201)
+})
+```
+
+- No vitest é necessário importar as funções que serão utilizadas, diferente do Jest
+- Precisamos dar esse **await app.ready()** para aguardar a aplicação ficar pronta (Carregar todas as rotas). Senão vai dar um 404 nas rotas.
+- Na parte do **expect** poderia colocar direto no await request(...).post(...).send(...).expect(201) ao invés de colocar em uma variável e dar um expect do jeito "clássico" mas eu não gostei muito por não ser semântico *"expect 201, mas é 201 o que?"* embora que o valor *default* pareça ser o statusCode eu preferi por deixar do jeito clássico.
+
+
+```javascript
+import { execSync } from 'node:child_process'
+```
+- O child_process permite quue você execute comandos do terminal dentro do Node, muito maneiro!
