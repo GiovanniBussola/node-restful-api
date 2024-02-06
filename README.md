@@ -156,3 +156,8 @@ Configure no package.json o seguinte script:
   "build": "tsup src --out-dir build"
 }
 ```
+
+### Opções de hospedagem
+- [Render](https://render.com/) - *Ideal para iniciantes*
+- [Fly.io](https://fly.io/) - *É um pouco mais técnico*
+- [Railway](https://railway.app/)
