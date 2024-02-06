@@ -140,3 +140,19 @@ test('O usuário consegue criar uma nova transação', async () => {
 import { execSync } from 'node:child_process'
 ```
 - O child_process permite quue você execute comandos do terminal dentro do Node, muito maneiro!
+
+## Compilando o código
+Instale o tsup:
+```bash
+npm i tsup -D
+```
+
+Por que o tsup? É porque por baixo dos panos ele também usa o esbuild (Igual ao vitest)
+
+Configure no package.json o seguinte script:
+```json
+{
+  ...
+  "build": "tsup src --out-dir build"
+}
+```
